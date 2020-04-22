@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -17,22 +18,31 @@ public class DeleteData extends JFrame {
     JScrollPane scrollPane;
 
     public DeleteData() throws ClassNotFoundException, SQLException {
-        lTitle = new JLabel("Hapus Data Mahasiswa");
+        lTitle = new JLabel("Seluruh Data Mahasiswa");
+        lTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
+        lTitle.setForeground(new Color(236, 240, 241));
         bDelete = new JButton("Hapus");
+        bDelete.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bDelete.setForeground(new Color(255, 255, 255));
+        bDelete.setBackground(new Color(34, 167, 240));
         bBack = new JButton("Kembali");
+        bBack.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bBack.setForeground(new Color(255, 255, 255));
+        bBack.setBackground(new Color(255, 40, 20, 204));
         table = new JTable(datas, column);
         scrollPane = new JScrollPane(table);
 
+        getContentPane().setBackground(new Color(93, 119, 146));
+
         setTitle("Hapus Data Mahasiswa");
-        lTitle.setHorizontalAlignment(SwingConstants.CENTER);
         DBConnection connec = new DBConnection();
         statement = connec.getConnection().createStatement();
         String sql = "SELECT * FROM data_mhs";
         resultSet = statement.executeQuery(sql);
         int p = 0;
         while (resultSet.next()) {
-            datas[p][0] = resultSet.getString("nama");
-            datas[p][1] = resultSet.getString("nim");
+            datas[p][0] = resultSet.getString("nim");
+            datas[p][1] = resultSet.getString("nama");
             datas[p][2] = resultSet.getString("alamat");
             p++;
         }
@@ -40,14 +50,16 @@ public class DeleteData extends JFrame {
         add(lTitle);
         add(bDelete);
         add(bBack);
+        add(scrollPane);
 
-        lTitle.setBounds(50, 10, 150, 25);
-        bBack.setBounds(30, 90, 100, 25);
-        bDelete.setBounds(140, 90, 100, 25);
-        setSize(700,600);
+        lTitle.setBounds(160, 30, 300, 30);
+        bDelete.setBounds(170, 70, 90, 25);
+        bBack.setBounds(280, 70, 90, 25);
+        scrollPane.setBounds(70, 120, 400, 400);
+
+        setSize(550,650);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        pack();
         setLocationRelativeTo(null);
 
         bBack.addActionListener(new ActionListener() {
