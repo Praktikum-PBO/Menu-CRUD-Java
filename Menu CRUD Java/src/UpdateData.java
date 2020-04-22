@@ -7,10 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UpdateData extends JFrame {
-    JLabel lTitle;
-    JButton bUpdate, bBack;
+
     Statement statement;
     ResultSet resultSet;
+    JButton bUpdate, bBack;
+    JLabel lTitle;
     String[][] datas = new String[500][3];
     String[] column = {"Nim","Nama","Alamat"};
     JTable table;
@@ -18,14 +19,23 @@ public class UpdateData extends JFrame {
 
     public UpdateData() throws ClassNotFoundException, SQLException {
         lTitle = new JLabel ("Seluruh Data Mahasiswa");
+        lTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
+        lTitle.setForeground(new Color(236, 240, 241));
         bUpdate = new JButton ("Edit");
+        bUpdate.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bUpdate.setForeground(new Color(255, 255, 255));
+        bUpdate.setBackground(new Color(34, 167, 240));
         bBack = new JButton ("Kembali");
+        bBack.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bBack.setForeground(new Color(255, 255, 255));
+        bBack.setBackground(new Color(255, 40, 20, 204));
         table = new JTable(datas, column);
         scrollPane = new JScrollPane(table);
 
+        getContentPane().setBackground(new Color(93, 119, 146));
+
         setTitle("EDIT DATA MAHASISWA");
         setSize (700,600);
-        lTitle.setHorizontalAlignment(SwingConstants.CENTER);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -33,13 +43,12 @@ public class UpdateData extends JFrame {
         add(lTitle);
         add(bUpdate);
         add(bBack);
-
-        lTitle.setBounds(150, 50, 250, 30);
-        bUpdate.setBounds(150, 90, 100, 20);
-        bBack.setBounds(270, 90, 100, 20);
-
-        setLayout(new FlowLayout());
         add(scrollPane);
+
+        lTitle.setBounds(160, 30, 300, 30);
+        bUpdate.setBounds(170, 70, 90, 25);
+        bBack.setBounds(280, 70, 90, 25);
+        scrollPane.setBounds(70, 120, 400, 400);
 
         DBConnection connec = new DBConnection();
         statement = connec.getConnection().createStatement();
