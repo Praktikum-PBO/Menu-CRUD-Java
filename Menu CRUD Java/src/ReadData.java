@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,9 +17,11 @@ public class ReadData extends JFrame {
     ResultSet resultSet;
 
     public ReadData() {
-        setTitle("EDIT DATA MAHASISWA");
+        setTitle("TAMPILKAN DATA MAHASISWA");
 
-        lTitle = new JLabel("Data Seluruh Mahasiswa");
+        lTitle = new JLabel("Seluruh Data Mahasiswa");
+        lTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
+        lTitle.setForeground(new Color(236, 240, 241));
         bBack = new JButton("Kembali");
         bBack.setFont(new Font("Tahoma", Font.BOLD, 14));
         bBack.setForeground(new Color(255, 255, 255));
@@ -28,15 +29,20 @@ public class ReadData extends JFrame {
         table = new JTable(datas, column);
         scrollPane = new JScrollPane(table);
 
-        getContentPane().setBackground(new Color(99, 144, 187));
+        getContentPane().setBackground(new Color(69, 91, 113));
 
-        setLayout(new FlowLayout());
+        setLayout(null);
+        add(lTitle);
         add(bBack);
         add(scrollPane);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        lTitle.setBounds(130, 30, 300, 30);
+        bBack.setBounds(210, 70, 90, 30);
+        scrollPane.setBounds(70, 120, 400, 400);
+
+        setSize(570, 650);
         setVisible(true);
-        pack();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         bBack.addActionListener(new ActionListener() {
