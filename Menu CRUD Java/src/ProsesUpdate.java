@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -15,44 +16,65 @@ public class ProsesUpdate extends JFrame {
     public ProsesUpdate() {
 
         setTitle("FORM EDIT DATA");
-        lTitle = new JLabel("Form Edit Data");
-        lName = new JLabel("Nama   : ");
-        lNIM = new JLabel("NIM      :");
-        lAddress = new JLabel("Alamat : ");
-
-        tfName = new JTextField("");
-        tfNIM = new JTextField("");
-        tfAddress = new JTextField("");
-
-        bSave = new JButton("Simpan");
+        lTitle = new JLabel("FORM EDIT DATA");
+        lTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
+        lTitle.setForeground(new Color(236, 240, 241));
+        lName = new JLabel("Nama ");
+        lName.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lName.setForeground(new Color(236, 240, 241));
+        lNIM = new JLabel("NIM ");
+        lNIM.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lNIM.setForeground(new Color(236, 240, 241));
+        lAddress = new JLabel ("Alamat ");
+        lAddress.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lAddress.setForeground(new Color(236, 240, 241));
+        tfName = new JTextField();
+        tfName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        tfName.setForeground(new Color(245, 249, 250));
+        tfName.setBackground(new Color(108, 122, 137));
+        tfNIM = new JTextField();
+        tfNIM.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        tfNIM.setForeground(new Color(245, 249, 250));
+        tfNIM.setBackground(new Color(108, 122, 137));
+        tfAddress = new JTextField();
+        tfAddress.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        tfAddress.setForeground(new Color(245, 249, 250));
+        tfAddress.setBackground(new Color(108, 122, 137));
+        bSave = new JButton("Edit");
+        bSave.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bSave.setForeground(new Color(255, 255, 255));
+        bSave.setBackground(new Color(34, 167, 240));
         bBack = new JButton("Kembali");
+        bBack.setFont(new Font("Tahoma", Font.BOLD, 14));
+        bBack.setForeground(new Color(255, 255, 255));
+        bBack.setBackground(new Color(255, 40, 20, 204));
+
+        getContentPane().setBackground(new Color(44, 62, 80));
 
         setLayout(null);
         add(lTitle);
         add(lName);
         add(lNIM);
         add(lAddress);
-
         add(tfName);
         add(tfNIM);
         add(tfAddress);
-
         add(bSave);
         add(bBack);
-        lTitle.setBounds(150, 50, 150, 30);
-        lName.setBounds(150, 90, 50, 20);
-        lNIM.setBounds(150, 130, 50, 20);
-        lAddress.setBounds(150, 170, 50, 20);
-        tfName.setBounds(200, 90, 120, 20);
-        tfNIM.setBounds(200, 130, 120, 20);
-        tfAddress.setBounds(200, 170, 120, 50);
-        bSave.setBounds(150, 230, 90, 20);
-        bBack.setBounds(250, 230, 90, 20);
 
-        setSize(500, 400);
+        lTitle.setBounds(110, 30, 250, 30);
+        lName.setBounds(90, 70, 90, 30);
+        tfName.setBounds(170, 73, 160, 25);
+        lNIM.setBounds(90, 110, 90, 30);
+        tfNIM.setBounds(170, 113, 160, 25);
+        lAddress.setBounds(90, 150, 90, 30);
+        tfAddress.setBounds(170, 153, 160, 70);
+        bSave.setBounds(120, 245, 90, 30);
+        bBack.setBounds(220, 245, 90, 30);
+
+        setSize(430, 370);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
         bSave.addActionListener(new ActionListener() {
 
